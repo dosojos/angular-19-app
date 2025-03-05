@@ -1,0 +1,76 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav
+    #drawer
+    class="sidenav"
+    fixedInViewport
+    [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+    [mode]="(isHandset$ | async) ? 'over' : 'side'"
+    [opened]="(isHandset$ | async) === false"
+  >
+    <mat-toolbar>Menu</mat-toolbar>
+    <mat-nav-list>
+      <a
+        mat-list-item
+        [routerLink]="['/dashboard']"
+        routerLinkActive="router-link-active"
+        >Dashboard</a
+      >
+      <a
+        mat-list-item
+        [routerLink]="['/tree']"
+        routerLinkActive="router-link-active"
+        >Tree</a
+      >
+      <a
+        mat-list-item
+        [routerLink]="['/table']"
+        routerLinkActive="router-link-active"
+        >Table</a
+      >
+
+      <a
+        mat-list-item
+        [routerLink]="['/tasks']"
+        routerLinkActive="router-link-active"
+        >Drag Drop</a
+      >
+      <a
+        mat-list-item
+        [routerLink]="['/rating']"
+        routerLinkActive="router-link-active"
+        >Rating</a
+      >
+      <a
+        mat-list-item
+        [routerLink]="['/address']"
+        routerLinkActive="router-link-active"
+        >Address</a
+      >
+
+      <a
+        mat-list-item
+        [routerLink]="['/login']"
+        routerLinkActive="router-link-active"
+        >Login</a
+      >
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      @if (isHandset$ | async) {
+      <button
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        (click)="drawer.toggle()"
+      >
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      }
+      <span>custom-form-controls</span>
+    </mat-toolbar>
+    <ng-content #name></ng-content>
+
+    <!-- Add Content Here -->
+  </mat-sidenav-content>
+</mat-sidenav-container>

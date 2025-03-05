@@ -1,0 +1,25 @@
+<div
+  class="rating-container"
+  (blur)="onTouchedHandler()"
+  role="slider"
+  [attr.aria-label]="placeholder"
+  [attr.aria-valuemin]="0"
+  [attr.aria-valuemax]="5"
+  [attr.aria-valuenow]="value"
+  [attr.aria-describedby]="describedBy"
+>
+  <div
+    *ngFor="let star of [1, 2, 3, 4, 5]"
+    class="star"
+    [class.selected]="star <= value"
+    [class.hovered]="star <= hoverValue"
+    [class.disabled]="disabled"
+    (click)="setValue(star)"
+    (mouseenter)="onMouseEnter(star)"
+    (mouseleave)="onMouseLeave()"
+  >
+    <div class="star-icon">
+      {{ star <= (hoverValue || value) ? "★" : "☆" }}
+    </div>
+  </div>
+</div>

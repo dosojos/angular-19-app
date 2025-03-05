@@ -1,0 +1,55 @@
+.rating-container {
+  display: inline-flex;
+  flex-direction: row;
+  gap: 0;
+  align-items: center;
+  min-height: 48px;
+  padding: 4px 0;
+}
+
+.star {
+  font-size: 24px;
+  cursor: pointer;
+  color: var(--md-sys-color-outline);
+  transition: color 200ms ease-in-out, transform 200ms ease;
+  user-select: none;
+
+  &:hover {
+    transform: scale(1.2);
+  }
+
+  &.selected {
+    color: var(--md-sys-color-primary);
+  }
+
+  &.hovered {
+    color: var(--md-sys-color-primary);
+    opacity: 0.8;
+  }
+
+  &.disabled {
+    color: var(--md-sys-color-on-surface-variant);
+    cursor: default;
+    opacity: 0.38;
+
+    &:hover {
+      transform: none;
+    }
+  }
+}
+
+:host {
+  display: inline-block;
+}
+
+:host.ng-invalid.ng-touched .star {
+  color: var(--md-sys-color-error);
+
+  &.selected {
+    color: var(--md-sys-color-error);
+  }
+}
+
+.star-icon {
+  padding: 4px;
+}
